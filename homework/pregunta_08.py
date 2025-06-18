@@ -27,3 +27,16 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+    asoc = {}
+    with open("files/input/data.csv", "r") as f:
+        for linea in f:
+            partes = linea.strip().split("\t")
+            letra = partes[0]
+            valor = int(partes[1])
+            if valor not in asoc:
+                asoc[valor] = set()
+            asoc[valor].add(letra)
+    resultado = []
+    for valor in sorted(asoc.keys()):
+        resultado.append((valor, sorted(list(asoc[valor]))))
+    return resultado

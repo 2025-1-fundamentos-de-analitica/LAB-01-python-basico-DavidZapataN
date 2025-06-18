@@ -14,5 +14,13 @@ def pregunta_11():
     Rta/
     {'a': 122, 'b': 49, 'c': 91, 'd': 73, 'e': 86, 'f': 134, 'g': 35}
 
-
     """
+    suma = {}
+    with open("files/input/data.csv", "r") as f:
+        for linea in f:
+            partes = linea.strip().split("\t")
+            valor = int(partes[1])
+            letras = partes[3].split(',')
+            for letra in letras:
+                suma[letra] = suma.get(letra, 0) + valor
+    return dict(sorted(suma.items()))

@@ -18,5 +18,13 @@ def pregunta_10():
      ('E', 2, 3),
      ('E', 3, 3)]
 
-
     """
+    resultado = []
+    with open("files/input/data.csv", "r") as f:
+        for linea in f:
+            partes = linea.strip().split("\t")
+            letra = partes[0]
+            col4 = partes[3].split(',')
+            col5 = partes[4].split(',')
+            resultado.append((letra, len(col4), len(col5)))
+    return resultado
